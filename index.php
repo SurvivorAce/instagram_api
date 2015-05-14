@@ -26,9 +26,16 @@ curl_setopt($curl, CURLOPT_POSTFIELDS, $access_token_settings); //setting the PO
 curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1); //setting it equal to 1 because we are getting strings back.
 curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false); //but in live work-production we want to set this to true.
 
-}
+
 $result = curl_exec($curl);
-curl_close();
+curl_close($curl);
+
+$results = json_decode($result, true);
+echo $results['user']['username'];
+}
+else {
+
+}
 ?>
 
 <!doctype html>
